@@ -42,7 +42,11 @@ int main()
     vector<int> arr = {2, 4, 6, 8};
 
     Node *Head = convertArr(arr);
-    cout << Head->data;
+    Node* temp=Head;
+    while(temp!=nullptr){
+        cout<<"Node->"<<temp->data<<" ";
+        temp=temp->next;
+    }
 
     return 0;
 }
