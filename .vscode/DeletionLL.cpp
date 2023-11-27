@@ -46,14 +46,27 @@ void print(Node* Head){
     }
 }
 
-Node* DeleteTail(Node* Head){
+Node* DeleteK(Node* Head,int k){
     if(Head==NULL||Head->next==NULL) return NULL;
-    Node* temp=Head;
-    while(temp->next->next!=NULL){
+ 
+    if(k==1){
+        Node*temp=Head;
+        Head=Head->next;
+        return Head;
+    }
+    int cnt=0;
+    Node*temp=Head;
+    Node*prev =NULL;
+    while(temp->next!=NULL){
+        cnt++;
+        if(cnt==k){
+            prev->next=prev->next->next;
+            free(temp);
+            break;
+        }
+        prev=temp;
         temp=temp->next;
     }
-    delete temp->next;
-    temp->next=nullptr;
     return Head;
 }
 int main()
@@ -62,7 +75,7 @@ int main()
     vector<int> arr = {2, 4, 6, 8};
     
     Node *Head = convertArr(arr);
-    Head=DeleteTail(Head);
+    Head=DeleteK(Head,4);
     print(Head);
 
     return 0;
