@@ -1,3 +1,4 @@
+// Deleting Head of Linked List
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -36,17 +37,32 @@ Node *convertArr(vector<int> &arr)
     // Return the head of the new linked list
     return Head;
 }
+
+void print(Node* Head){
+    Node* temp=Head;
+    while(temp!=nullptr){
+        cout<<temp->data<<" ";
+        temp=temp->next;
+    }
+}
+
+Node* DeleterLL(Node* Head){
+    if(Head==NULL) return Head;
+    Node* temp=Head;
+    Head=Head->next;
+    delete temp;
+    return Head;
+}
 int main()
 {
     // initializing array with given values
     vector<int> arr = {2, 4, 6, 8};
     
     Node *Head = convertArr(arr);
-    Node* temp=Head;
-    while(temp!=nullptr){
-        cout<<"Node->"<<temp->data<<" ";
-        temp=temp->next;
-    }
+    Head= DeleterLL(Head);
+    Head= DeleterLL(Head);
+
+    print(Head);
 
     return 0;
 }
