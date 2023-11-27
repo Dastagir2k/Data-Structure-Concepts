@@ -46,20 +46,20 @@ void print(Node* Head){
     }
 }
 
-Node* DeleteK(Node* Head,int k){
+Node* DeleteVal(Node* Head,int val){
     if(Head==NULL||Head->next==NULL) return NULL;
  
-    if(k==1){
+    if(Head->data==val){
         Node*temp=Head;
         Head=Head->next;
+        free(temp);
         return Head;
     }
-    int cnt=0;
+    
     Node*temp=Head;
     Node*prev =NULL;
     while(temp->next!=NULL){
-        cnt++;
-        if(cnt==k){
+        if(temp->data==val){
             prev->next=prev->next->next;
             free(temp);
             break;
@@ -72,10 +72,10 @@ Node* DeleteK(Node* Head,int k){
 int main()
 {
     // initializing array with given values
-    vector<int> arr = {2, 4, 6, 8};
+    vector<int> arr = {4, 4, 6, 8};
     
     Node *Head = convertArr(arr);
-    Head=DeleteK(Head,4);
+    Head=DeleteVal(Head,4);
     print(Head);
 
     return 0;
