@@ -1,5 +1,4 @@
-// Deleting Head of Linked List
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
 struct Node
@@ -38,6 +37,12 @@ Node *convertArr(vector<int> &arr)
     return Head;
 }
 
+Node* insertHead(Node* Head,int val){
+    Node* temp=new Node(val);
+    temp->next=Head;
+    return temp;
+}
+
 void print(Node* Head){
     Node* temp=Head;
     while(temp!=nullptr){
@@ -45,38 +50,12 @@ void print(Node* Head){
         temp=temp->next;
     }
 }
-
-Node* DeleteVal(Node* Head,int val){
-    if(Head==NULL||Head->next==NULL) return NULL;
- 
-    if(Head->data==val){
-        Node* temp=Head;
-        Head=Head->next;
-        free(temp);
-        return Head;
-    }
-    
-    Node*temp=Head;
-    Node*prev =NULL;
-    while(temp->next!=NULL){
-        if(temp->data==val){
-            prev->next=prev->next->next;
-            free(temp);
-            break;
-        }
-        prev=temp;
-        temp=temp->next;
-    }
-    return Head;
-}
-int main()
+int main(int argc, char const *argv[])
 {
-    // initializing array with given values
-    vector<int> arr = {4, 4, 6, 8};
-    
-    Node *Head = convertArr(arr);
-    Head=DeleteVal(Head,4);
+    /* code */
+    vector<int> arr={5,4,3,2,1};
+    Node* Head= convertArr(arr);
+    Head=insertHead(Head,6);
     print(Head);
-
     return 0;
 }
