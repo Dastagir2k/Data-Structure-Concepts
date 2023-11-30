@@ -83,6 +83,22 @@ Node* DeleteKthElement(Node* head,int k){
     delete temp;
     return head;
 }
+
+Node* InsertHead(Node* head  , int val){
+    Node* newNode=new Node(val,head,nullptr);
+    head->back=newNode;
+    return newNode;
+}
+Node* InsertTail(Node* head,int val){
+    // Node* newNode=new Node(val,nullptr,head)
+    Node* temp=head;
+    while(temp->next!=NULL){
+        temp=temp->next;
+    }
+    Node* newNode=new Node(val,nullptr,temp);
+    temp->next=newNode;
+    return head;
+}
 void print(Node* head){
     while(head!=NULL){
         cout<<head->data<<" ";
@@ -93,8 +109,8 @@ int main()
 {
     vector<int>arr={1,2,3,4};
     Node* head = convertArr(arr);
-    head=DeleteKthElement(head,1);
-
+    // head=DeleteKthElement(head,1);
+    head=InsertTail(head,5);
     print(head);
     
     return 0;
