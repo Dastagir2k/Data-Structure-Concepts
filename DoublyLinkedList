@@ -109,8 +109,8 @@ int main()
 {
     vector<int>arr={1,2,3,4};
     Node* head = convertArr(arr);
-    // head=DeleteKthElement(head,1);
-    head=InsertTail(head,5);
+    head=DeleteKthElement(head,1);
+   // head=InsertTail(head,5);
     print(head);
     
     return 0;
